@@ -1,9 +1,7 @@
-# React TypeScript Boilerplate
+# React TypeScript
 
-## React + TypeScript + Vite + Tailwind
-
-## Yarn
+## Sidebar
 
 Made by **Anddy**
 
-version 1.0
+version 0.0
