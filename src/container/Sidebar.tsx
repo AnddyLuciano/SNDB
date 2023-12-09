@@ -1,40 +1,47 @@
+import { Collapsible } from "../components/Collapsible";
+import { Title } from "../components/Title";
 import { useRecoilState } from "recoil";
 import { sidebarCollapseState } from "../App";
+import { useMenuItems } from "../hooks/useMenuItems";
+import { MenuItems } from "../components/MenuItem";
+import { useNavigate } from "react-router-dom";
 
 export const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useRecoilState(sidebarCollapseState);
     const sidebarWidth = 350;
+    const menuItems = useMenuItems();
+    const navigate = useNavigate();
 
     const handleCollapseMenu = () => {
         setIsCollapsed(!isCollapsed);
     };
+
     return (
         <div
-            className={`sidebar relative bg-slate-950 text-white py-2 h-[100dvh] ${
-                isCollapsed ? `w-[${sidebarWidth}px] px-4` : "px-0"
+            className={`sidebar relative bg-slate-950 text-white py-6 h-[100dvh] duration-150 ease-[cubic-bezier(0.18,0.89,0.32,1.27)] ${
+                isCollapsed ? `min-w-[${sidebarWidth}px] px-4` : "px-2"
             }`}
         >
-            <div className="menu-title-section flex items-center">
-                <img
-                    src="../public/Logo Sa.svg"
-                    alt="logo-sariaka"
-                    width={55}
-                    className="inline-block"
-                />
-                {isCollapsed && (
-                    <span className="font-bold text-xl">Sariakaniaina</span>
-                )}
+            <Title isCollapsed={isCollapsed} />
+            <Collapsible
+                handleCollapseMenu={handleCollapseMenu}
+                isCollapsed={isCollapsed}
+            />
+            <div className="flex flex-col gap-3">
+                {menuItems.map((menuItem, index) => {
+                    return (
+                        <MenuItems
+                            key={`menu-items-${index}`}
+                            icon={menuItem.icon}
+                            value={menuItem.title}
+                            onlyIcon={isCollapsed}
+                            onClick={() => {
+                                navigate({ pathname: menuItem.link });
+                            }}
+                        />
+                    );
+                })}
             </div>
-            <aside
-                className="absolute top-2 -right-3 bg-slate-400 px-2 rounded-full"
-                onClick={handleCollapseMenu}
-            >
-                {isCollapsed ? (
-                    <i className="fa-solid fa-angle-left text-xs"></i>
-                ) : (
-                    <i className="fa-solid fa-angle-right text-xs"></i>
-                )}
-            </aside>
         </div>
     );
 };
