@@ -6,8 +6,11 @@ import { useMenuItems } from "../hooks/useMenuItems";
 import { MenuItems } from "../components/MenuItem";
 import { useNavigate } from "react-router-dom";
 
+import "../css/sidebar.css";
+
 export const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useRecoilState(sidebarCollapseState);
+    const [, path] = location.pathname.split("/");
     const sidebarWidth = 350;
     const menuItems = useMenuItems();
     const navigate = useNavigate();
@@ -23,10 +26,7 @@ export const Sidebar = () => {
             }`}
         >
             <Title isCollapsed={isCollapsed} />
-            <Collapsible
-                handleCollapseMenu={handleCollapseMenu}
-                isCollapsed={isCollapsed}
-            />
+            <Collapsible handleCollapseMenu={handleCollapseMenu} isCollapsed={isCollapsed} />
             <div className="flex flex-col gap-3">
                 {menuItems.map((menuItem, index) => {
                     return (
@@ -35,6 +35,7 @@ export const Sidebar = () => {
                             icon={menuItem.icon}
                             value={menuItem.title}
                             onlyIcon={isCollapsed}
+                            isActive={menuItem.ke === path}
                             onClick={() => {
                                 navigate({ pathname: menuItem.link });
                             }}
