@@ -1,6 +1,6 @@
 import { Sidebar } from "./Sidebar";
 import { Outlet } from "react-router-dom";
-import { GeneralSuspense } from "../components/GeneralSuspense";
+import { GeneralSuspense } from "../../../components/GeneralSuspense";
 
 export const Layout = () => {
     return (

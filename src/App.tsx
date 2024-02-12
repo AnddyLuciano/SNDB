@@ -1,8 +1,9 @@
 import { atom } from "recoil";
 import "./App.css";
-import { Layout } from "./container/Layout";
+import { Layout } from "./views/admin/container/Layout";
 import { AppRouteProps, AppRoutes } from "./AppRoutes";
 import * as React from "react";
+import { Outlet } from "react-router-dom";
 
 function App() {
     return <AppRoutes routes={Routes} />;
@@ -10,9 +11,11 @@ function App() {
 
 export default App;
 
-const Home = React.lazy(() => import("./views/Home/Container/Home"));
-const Anounce = React.lazy(() => import("./views/Anounce/Container/Anounce"));
-const Dashboard = React.lazy(() => import("./views/Dashboard/Container/Dashboard"));
+const Home = React.lazy(() => import("./views/admin/views/Home/Container/Home"));
+const Anounce = React.lazy(() => import("./views/admin/views/Anounce/Container/Anounce"));
+const Dashboard = React.lazy(() => import("./views/admin/views/Dashboard/Container/Dashboard"));
+const Login = React.lazy(() => import("./views/auth/views/login/container/Login"));
+const Signup = React.lazy(() => import("./views/auth/views/signup/container/Signup"));
 
 const Routes: Array<AppRouteProps> = [
     {
@@ -30,6 +33,20 @@ const Routes: Array<AppRouteProps> = [
             {
                 path: "announce",
                 element: <Anounce />,
+            },
+        ],
+    },
+    {
+        path: "auth",
+        element: <Outlet />,
+        children: [
+            {
+                path: "login",
+                element: <Login />,
+            },
+            {
+                path: "signup",
+                element: <Signup />,
             },
         ],
     },

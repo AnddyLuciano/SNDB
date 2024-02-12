@@ -1,17 +1,17 @@
-import { Collapsible } from "../components/Collapsible";
-import { Title } from "../components/Title";
+import { Collapsible } from "../../../components/Collapsible";
+import { Title } from "../../../components/Title";
 import { useRecoilState } from "recoil";
-import { sidebarCollapseState } from "../App";
-import { useMenuItems } from "../hooks/useMenuItems";
-import { MenuItems } from "../components/MenuItem";
+import { sidebarCollapseState } from "../../../App";
+import { useMenuItems } from "../../../hooks/useMenuItems";
+import { MenuItems } from "../../../components/MenuItem";
 import { useNavigate } from "react-router-dom";
 
-import "../css/sidebar.css";
+import "../../../css/sidebar.css";
+import { useEffect } from "react";
 
 export const Sidebar = () => {
     const [isCollapsed, setIsCollapsed] = useRecoilState(sidebarCollapseState);
     const [, path] = location.pathname.split("/");
-    const sidebarWidth = 350;
     const menuItems = useMenuItems();
     const navigate = useNavigate();
 
@@ -19,10 +19,17 @@ export const Sidebar = () => {
         setIsCollapsed(!isCollapsed);
     };
 
+    useEffect(() => {
+        setTimeout(() => {
+            window.dispatchEvent(new Event("resize"));
+        }, 100);
+        console.log(isCollapsed);
+    }, [isCollapsed]);
+
     return (
         <div
             className={`sidebar relative bg-slate-950 text-white py-6 h-[100dvh] duration-150 ease-[cubic-bezier(0.18,0.89,0.32,1.27)] ${
-                isCollapsed ? `min-w-[${sidebarWidth}px] px-4` : "px-2"
+                isCollapsed && "min-w-[200px]"
             }`}
         >
             <Title isCollapsed={isCollapsed} />
@@ -39,6 +46,7 @@ export const Sidebar = () => {
                             onClick={() => {
                                 navigate({ pathname: menuItem.link });
                             }}
+                            children={menuItem.children}
                         />
                     );
                 })}

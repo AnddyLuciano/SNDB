@@ -1,6 +1,21 @@
 @tailwind components;
 @layer components{
+    .menu:hover .sub{
+        opacity: 1;
+        display: block;
+    }
     .menu-active,.menu-section:hover{
+        @apply bg-slate-800 cursor-pointer
+    }
+    .sub-menu-box{
+        position: absolute;
+        left: 100%;
+        top: 0;
+        transform: translateY(-25%);
+        min-width: max-content;
+        white-space: nowrap;
+    }
+    .sub-menu-box{
         @apply bg-slate-800 cursor-pointer
     }
 }

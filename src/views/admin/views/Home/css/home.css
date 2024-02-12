@@ -1,0 +1,23 @@
+.tutorial{
+    background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(179,215,191,1) 22%, rgba(183,182,221,1) 49%, rgba(130,162,237,1) 74%, rgba(148,220,233,1) 100%);
+}
+.fc{
+    width: 100%;
+}
+.fc-toolbar-title, .fc-col-header {
+    font-family: 'Poppins', sans-serif;
+}
+::-webkit-scrollbar {
+    width: 17px;
+  }
+::-webkit-scrollbar-track {
+    background: transparent;
+    border: 1px solid #ffffff49;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #ffffff10;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ffffff41;
+  }

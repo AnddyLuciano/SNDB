@@ -4,6 +4,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root{
+    --fc-button-bg-color: #202635;
+    --fc-button-hover-bg-color: #202635;
+    --fc-button-border-color: #ffffff49;
+    --fc-button-hover-border-color: #ffffff6b;
+    --fc-today-bg-color:#8EA7E9;
+}
+
 body{
     font-family: 'Poppins', sans-serif;
     color:white
