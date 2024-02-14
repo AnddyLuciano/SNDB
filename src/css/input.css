@@ -1,0 +1,32 @@
+@tailwind components;
+@layer components{
+    .input-text, .input-password{
+        @apply flex items-center justify-center gap-3 border-2 border-zinc-400 rounded-md px-3 py-2 bg-white
+    }
+    .input-text.active, .input-password.active{
+        @apply border-gray-800
+    }
+    .input-text-box,.input-password-box{
+        @apply flex-1 flex flex-col gap-3
+    }
+    .input-text.focus, .input-password.focus{
+        @apply !border-[#1A283F]
+    }
+    input[type=text],input[type=password]{
+        @apply border-none focus:outline-none
+    }
+    .label{
+        @apply text-[#1A283F] font-semibold
+    }
+    /* Checkbox */
+    .checkbox-container{
+        @apply flex items-center justify-start gap-3
+    }
+    .checkbox-container input[type=checkbox] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 0;
+        width: 0;
+      }
+}

@@ -3,8 +3,9 @@ import { ComponentPropsWithoutRef } from "react";
 export const Button = (props: ButtonProps) => {
     return (
         <div
+            style={{ backgroundColor: props.color }}
             onClick={props.onClick}
-            className={`p-2 rounded-md border-2 text-[#ebf2f7] text-center font-semibold bg-[#00000010] hover:bg-[#00000021] hover:cursor-pointer ${props.className}`}
+            className={`p-2 rounded-md text-[#ebf2f7] text-center font-semibold duration-150 hover:cursor-pointer ${props.className}`}
         >
             {props.label}
         </div>
@@ -12,4 +13,6 @@ export const Button = (props: ButtonProps) => {
 };
 type ButtonProps = ComponentPropsWithoutRef<"div"> & {
     label: string;
+    color?: string;
+    hoverColor?: string;
 };

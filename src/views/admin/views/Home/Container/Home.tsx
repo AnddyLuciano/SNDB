@@ -18,7 +18,7 @@ const Home = () => {
                             Commencez avec le tutoriel. Il vous présentera rapidement les
                             fonctionnalités principales de SNDB.
                         </span>
-                        <Button label="Regarder maintenant" className="w-full" />
+                        <Button label="Regarder maintenant" className="w-full border-2" />
                     </Box>
                     <Box className="welcome bg-[#ffffff10]">
                         <span className="text-[13px] font-semibold text-left">

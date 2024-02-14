@@ -11,10 +11,9 @@
     --fc-button-hover-border-color: #ffffff6b;
     --fc-today-bg-color:#8EA7E9;
 }
-
 body{
     font-family: 'Poppins', sans-serif;
-    color:white
+    color:white;
 }
 *,::before,::after{
     padding: 0;

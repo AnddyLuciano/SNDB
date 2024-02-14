@@ -1,0 +1,31 @@
+.login-layout{
+    background: url("/public/login-bg.svg") no-repeat center;
+    object-fit: cover;
+}
+.form{
+    -webkit-box-shadow: 1px 0px 14px 1px rgba(0,0,0,0.45);
+-moz-box-shadow: 1px 0px 14px 1px rgba(0,0,0,0.45);
+box-shadow: 1px 0px 14px 1px rgba(0,0,0,0.45);
+}
+.pngtree{
+    animation-name: pngtree;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    position: relative;
+    animation-timing-function: linear;
+}
+
+@keyframes pngtree {
+    0%{top: 0px;}
+    50%{top:20px}
+    100%{top: 0px;}
+}
+
+@media(max-width:767px){
+    .login-layout{
+        background: none;
+    }
+    .form{
+        @apply shadow-none
+    }
+}
