@@ -18,6 +18,9 @@
     .label{
         @apply text-[#1A283F] font-semibold
     }
+    input[type=password]:hover,input[type=text]:hover {
+        cursor: pointer;
+    }
     /* Checkbox */
     .checkbox-container{
         @apply flex items-center justify-start gap-3

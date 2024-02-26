@@ -1,9 +1,25 @@
+import { useState } from "react";
 import { Button } from "../../../../../components/Button";
 import { CheckboxInput } from "../../../../../components/CheckboxInput";
 import { PasswordInput } from "../../../../../components/PasswordInput";
 import { TextInput } from "../../../../../components/TextInput";
+import { useRecoilFormDataState } from "../../../../../hooks/useRecoilFormDataState";
 import "../css/login.css";
+import { useFetchUser } from "../hooks/useFetchUser";
 const Login = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const { formData, setFormData } = useRecoilFormDataState();
+    const loginMutation = useFetchUser();
+
+    const handleOnClick = () => {
+        setIsLoading(true);
+        const mutate = loginMutation({
+            data: { email: formData.email, password: formData.password },
+        }).then((data) => {
+            setIsLoading(false);
+            console.log(data);
+        });
+    };
     return (
         <main className="login-layout h-screen flex items-center justify-center text-black p-0">
             <div className="form max-w-screen-sm w-full min-w-max px-10 h-full bg-white flex flex-col items-center justify-center gap-10">
@@ -14,21 +30,26 @@ const Login = () => {
                 <div className="form-box flex flex-col gap-5 w-full">
                     <TextInput
                         id="email"
+                        name="email"
                         label="Email"
                         placeholder="user@country.com"
                         icon="fa-solid fa-envelope text-[rgb(161_161_170)]"
+                        validateInput="email"
                     />
                     <PasswordInput
                         id="password"
+                        name="password"
                         label="Mot de passe"
                         placeholder="••••••••••"
                         icon="fa-solid fa-key text-[rgb(161_161_170)]"
                     />
-                    <CheckboxInput id="remember" label="Se souvenir de moi" />
+                    <CheckboxInput id="remember" name="remember" label="Se souvenir de moi" />
                     <Button
                         label="Se connecter"
                         // hoverColor="#aaaa46"
-                        className="border-2 border-[#0b0e3e] bg-[#0b0e3e] hover:bg-[#0b0e3ec5] hover:border-[#0b0e3ec5]"
+                        className="border-2 border-[#0b0e3e] bg-[#0b0e3e]"
+                        onClick={handleOnClick}
+                        isLoading={isLoading}
                     />
                     <div className="or-box flex items-center justify-center">
                         <span className="border-t flex-1"></span>

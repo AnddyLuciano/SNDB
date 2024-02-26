@@ -5,14 +5,21 @@ export const Button = (props: ButtonProps) => {
         <div
             style={{ backgroundColor: props.color }}
             onClick={props.onClick}
-            className={`p-2 rounded-md text-[#ebf2f7] text-center font-semibold duration-150 hover:cursor-pointer ${props.className}`}
+            className={`relative p-2 rounded-md text-[#ebf2f7] text-center font-semibold duration-150 hover:cursor-pointer ${
+                props.className
+            } hover:opacity-80 ${props.isLoading && "opacity-80"}`}
         >
-            {props.label}
+            <p>{props.label}</p>
+            {props.isLoading && (
+                <div className="absolute top-1/2 translate-y-[-50%] right-2">
+                    <i className="fas fa-cog fa-spin"></i>
+                </div>
+            )}
         </div>
     );
 };
 type ButtonProps = ComponentPropsWithoutRef<"div"> & {
     label: string;
     color?: string;
-    hoverColor?: string;
+    isLoading?: boolean;
 };
