@@ -1,7 +1,9 @@
+import Search from "../components/searchDiv/Search";
+
 const Anounce = () => {
     return (
-        <div className="w-full h-full flex items-center justify-center">
-            Annonce
+        <div className="">
+            <Search />
         </div>
     );
 };
