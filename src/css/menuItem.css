@@ -5,7 +5,7 @@
         display: block;
     }
     .menu-active,.menu-section:hover{
-        @apply bg-slate-800 cursor-pointer
+        @apply bg-slate-800 cursor-pointer text-white
     }
     .sub-menu-box{
         position: absolute;
