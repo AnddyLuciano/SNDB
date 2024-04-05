@@ -4,6 +4,7 @@ import "./index.css";
 import { RecoilRoot } from "recoil";
 import { BrowserRouter } from "react-router-dom";
 import { MainLoading } from "./components/MainLoading.tsx";
+import { Theme } from "./components/theme/container/Theme.tsx";
 
 const App = React.lazy(() => import("./App.tsx"));
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -12,6 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
             <BrowserRouter>
                 <Suspense fallback={<MainLoading />}>
                     <App />
+                    <Theme />
                 </Suspense>
             </BrowserRouter>
         </RecoilRoot>
