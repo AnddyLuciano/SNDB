@@ -1,7 +1,5 @@
-# React TypeScript
+# React TS
 
-## Sidebar
+## SNDB
 
-Made by **Anddy**
-
-version 0.0
+Training to make a sidebar and ... it end with a dashboard project. 
